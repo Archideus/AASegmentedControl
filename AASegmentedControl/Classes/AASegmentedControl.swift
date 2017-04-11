@@ -9,9 +9,9 @@
 import UIKit
 
 @IBDesignable open class AASegmentedControl: UIControl {
-
+    
     /// Item names
-    open var itemNames: [String] = ["Tab 1", "Tab 2"]
+    open var itemNames: [String] = ["Публікація", "Сповіщення", "Відгук"]
     
     /// Font for items
     open var font: UIFont = UIFont.boldSystemFont(ofSize: 14)
@@ -32,14 +32,14 @@ import UIKit
             setNeedsLayout()
         }
     }
-
+    
     /// @IBInspectable AASegmentedControl direction
     @IBInspectable open var isHorizontal: Bool = true {
         didSet {
             setNeedsLayout()
         }
     }
-
+    
     /// @IBInspectable Border radius
     @IBInspectable open var borderRadius: CGFloat = 5 {
         didSet {
@@ -48,7 +48,7 @@ import UIKit
                 borderRadius = maxRadius
             }
             setNeedsLayout()
-
+            
         }
     }
     
@@ -111,7 +111,7 @@ import UIKit
         super.draw(rect)
         
         activeBackground = UIView()
-
+        
         layer.borderColor = borderColor.cgColor
         layer.cornerRadius = borderRadius
         layer.borderWidth = borderWidth
@@ -140,15 +140,15 @@ import UIKit
     func setupAutoLayout() {
         if isHorizontal {
             layoutItems(bindAttrs: [.top, .bottom],
-                            preAttr: .left,
-                            nextAttr: .right,
-                            equalAttr: .width)
+                        preAttr: .left,
+                        nextAttr: .right,
+                        equalAttr: .width)
         }
         else {
             layoutItems(bindAttrs: [.left, .right],
-                            preAttr: .top,
-                            nextAttr: .bottom,
-                            equalAttr: .height)
+                        preAttr: .top,
+                        nextAttr: .bottom,
+                        equalAttr: .height)
         }
     }
     
@@ -175,7 +175,7 @@ import UIKit
     
     /// Select and animate Item at index
     func selectItemAtIndex(){
-    
+        
         guard let label: UILabel = items.count > selectedIndex ? items[selectedIndex] : nil
             else { return }
         
@@ -207,7 +207,7 @@ import UIKit
         
         // Active view under line or rectangle
         if activeUnderline {
-            labelFrame.size.height = 4
+            labelFrame.size.height = 1.5
             labelFrame.origin.y = label.frame.maxY - 2*(labelFrame.size.height)
         }
         
@@ -237,5 +237,4 @@ import UIKit
     }
     
 }
-
 
